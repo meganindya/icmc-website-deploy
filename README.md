@@ -1,2 +1,1 @@
-# icmc-website-deploy
-Deployment code for meganindya/icmc-website
+Deployment code for [meganindya/icmc-website](https://github.com/meganindya/icmc-website).
