@@ -6,6 +6,7 @@
 
 <IfModule mod_headers.c>
 	Header unset ETag
+	Header set Cache-Control "max-age=0, public, must-revalidate"
 	
 	<filesMatch "\.(ico|jpe?g|png|gif|swf)$">
 		Header set Cache-Control "max-age=2592000, public"
@@ -16,8 +17,8 @@
 	<filesMatch "\.(js)$">
 		Header set Cache-Control "no-cache, private, must-revalidate"
 	</filesMatch>
-	<filesMatch "\.(x?html?|php)$">
-		Header set Cache-Control "no-cache, private, must-revalidate"
+	<filesMatch "\.(html?)$">
+		Header set Cache-Control "max-age=420, public, must-revalidate"
 	</filesMatch>
 </IfModule>
 
