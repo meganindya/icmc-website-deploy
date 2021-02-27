@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header unset ETag
+	
+	<filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+		Header set Cache-Control "max-age=2592000, public"
+	</filesMatch>
+	<filesMatch "\.(css)$">
+		Header set Cache-Control "max-age=0, public, must-revalidate"
+	</filesMatch>
+	<filesMatch "\.(js)$">
+		Header set Cache-Control "max-age=0, private, must-revalidate"
+	</filesMatch>
+	<filesMatch "\.(x?html?|php)$">
+		Header set Cache-Control "max-age=7200, private, must-revalidate"
+	</filesMatch>
+</IfModule>
+
+FileETag None
